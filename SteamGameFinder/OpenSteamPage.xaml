@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>710.4,1848</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1994,1971</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenLinkedInPage_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -81,36 +81,33 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OpenLinkedInPage" sap:VirtualizedContainerService.HintSize="715.2,1783.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="pageLoaded" />
-    </Sequence.Variables>
+  <Sequence DisplayName="OpenLinkedInPage" sap:VirtualizedContainerService.HintSize="773,1906" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="672,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Trying to open Steam Page.&quot;]" />
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="672,216.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[steamUrl]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="711,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Trying to open Steam Page.&quot;]" />
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="711,238" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[steamUrl]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,114.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="356.8,24.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
     </ui:OpenBrowser>
-    <ui:UiElementExists DisplayName="Check if page loaded" Exists="[pageLoaded]" sap:VirtualizedContainerService.HintSize="672,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:UiElementExists DisplayName="Check if page loaded" Exists="[pageLoaded]" sap:VirtualizedContainerService.HintSize="711,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3e0121b3-c713-472d-83f6-7150ccad0b09" InformativeScreenshot="a2df613e2b713e4c597ac1eca56d82fd" Selector="&lt;html app='chrome.exe' title='Welcome to Steam' /&gt;&lt;webctrl parentid='logo_holder' tag='IMG' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3e0121b3-c713-472d-83f6-7150ccad0b09" InformativeScreenshot="c233bf772ec38268c41828c5614b9560" Selector="&lt;html app='chrome.exe' title='Bun venit pe Steam' /&gt;&lt;webctrl parentid='logo_holder' tag='IMG' /&gt;">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -120,47 +117,47 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[pageLoaded]" sap:VirtualizedContainerService.HintSize="672,1156.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[pageLoaded]" sap:VirtualizedContainerService.HintSize="711,1238" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,182.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,203" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="356.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Steam was loaded succesfully!&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Steam was loaded succesfully!&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="594.4,796" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="633,859" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="551.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Could not load Steam. Retrying...&quot;]" />
-          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="551.2,573.6" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:05">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="571,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Could not load Steam. Retrying...&quot;]" />
+          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="571,616" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:05">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="509.6,306.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="529,349" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="466.4,216.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[steamUrl]">
+                  <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,238" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" Url="[steamUrl]">
                     <ui:OpenBrowser.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,114.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="356.8,24.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
+                          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
                         </Sequence>
                       </ActivityAction>
                     </ui:OpenBrowser.Body>
@@ -170,7 +167,7 @@
             </ui:RetryScope.ActivityBody>
             <ui:RetryScope.Condition>
               <ActivityFunc x:TypeArguments="x:Boolean">
-                <ui:UiElementExists DisplayName="Check if page loaded" Exists="[pageLoaded]" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                <ui:UiElementExists DisplayName="Check if page loaded" Exists="[pageLoaded]" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                   <ui:UiElementExists.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3e0121b3-c713-472d-83f6-7150ccad0b09" InformativeScreenshot="ca604ba956a9978a889251869333bfc2" Selector="&lt;html app='chrome.exe' title='Welcome to Steam' /&gt;&lt;webctrl parentid='logo_holder' tag='IMG' /&gt;">
                       <ui:Target.TimeoutMS>
