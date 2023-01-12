@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="OpenLinkedIn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="OpenLinkedIn" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="searchData" Type="InArgument(sd:DataTable)" />
     <x:Property Name="pageLoaded" Type="InArgument(x:Boolean)" />
@@ -6,10 +6,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1179,3908</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1703,2269</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenLinkedIn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="44">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -54,7 +54,7 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <scg:List x:TypeArguments="AssemblyReference" Capacity="45">
@@ -104,20 +104,29 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SeachJobs" sap:VirtualizedContainerService.HintSize="1140,3843" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SeachJobs" sap:VirtualizedContainerService.HintSize="820,2204" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[pageLoaded]" sap:VirtualizedContainerService.HintSize="1078,3721" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[pageLoaded]" sap:VirtualizedContainerService.HintSize="758,2093" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap2010:Annotation.AnnotationText="Login pe Steam &#xA;Datascraping pentru fiecare rand din excel&#xA;Trimiterea emailurilor" DisplayName="Sequence - DataScraping and Sending emails" sap:VirtualizedContainerService.HintSize="996,3335" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap2010:Annotation.AnnotationText="Login pe Steam &#xA;Datascraping pentru fiecare rand din excel&#xA;Trimiterea emailurilor" DisplayName="Sequence - DataScraping and Sending emails" sap:VirtualizedContainerService.HintSize="680,1714" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="username" />
             <Variable x:TypeArguments="ss:SecureString" Name="password" />
             <Variable x:TypeArguments="x:Boolean" Name="successfulLogin" />
-            <Variable x:TypeArguments="x:String" Default="LinkedIn" Name="credentialName" />
+            <Variable x:TypeArguments="x:String" Name="credentialName">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:String">Steam</Literal>
+              </Variable.Default>
+            </Variable>
+            <Variable x:TypeArguments="x:Boolean" Name="alreadyLoggedIn">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:Boolean" />
+              </Variable.Default>
+            </Variable>
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -125,194 +134,91 @@
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SteamLogin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="934,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SteamLogin.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="successfulLogin">[successfulLogin]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <If Condition="[successfulLogin]" sap:VirtualizedContainerService.HintSize="934,2994" sap2010:WorkflowViewState.IdRef="If_2">
+          <ui:UiElementExists DisplayName="Check if already logged in" Exists="[alreadyLoggedIn]" sap:VirtualizedContainerService.HintSize="618,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3e0121b3-c713-472d-83f6-7150ccad0b09" InformativeScreenshot="1e1f6db2f15f1fc8967fedb726bec1d2" Selector="&lt;html app='chrome.exe' title='Bun venit pe Steam' /&gt;&lt;webctrl id='header_notification_link' tag='DIV' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+          <If Condition="[alreadyLoggedIn]" sap:VirtualizedContainerService.HintSize="618,1399" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
-              <Sequence DisplayName="Sequence - Datascraping excel info" sap:VirtualizedContainerService.HintSize="852,2608" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="x:String" Name="jobTitle" />
-                  <Variable x:TypeArguments="x:Int32" Default="0" Name="ct" />
-                </Sequence.Variables>
+              <Sequence sap:VirtualizedContainerService.HintSize="400,224" sap2010:WorkflowViewState.IdRef="Sequence_18">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="790,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sucesfully logged in!&quot;]" />
-                <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[ct &lt; searchData.Rows.Count]" DisplayName="While" sap:VirtualizedContainerService.HintSize="790,2345" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
-                  <ui:InterruptibleWhile.Body>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="754,2170" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataScraping.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DataScraping.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="searchData">
+                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="searchData" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="540,999" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SteamLogin.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="478,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SteamLogin.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="successfulLogin">[successfulLogin]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <If Condition="[successfulLogin]" sap:VirtualizedContainerService.HintSize="478,735" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Sequence DisplayName="Sequence - Datascraping excel info" sap:VirtualizedContainerService.HintSize="400,356" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <Sequence.Variables>
-                        <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="jobs" />
+                        <Variable x:TypeArguments="x:String" Name="jobTitle" />
+                        <Variable x:TypeArguments="x:Int32" Default="0" Name="ct" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Search Icon" sap:VirtualizedContainerService.HintSize="692,116" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
-                        <ui:Click.CursorPosition>
-                          <ui:CursorPosition Position="Center">
-                            <ui:CursorPosition.OffsetX>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetX>
-                            <ui:CursorPosition.OffsetY>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetY>
-                          </ui:CursorPosition>
-                        </ui:Click.CursorPosition>
-                        <ui:Click.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="90acfcc60c546962068a3c96ebea0f61" Selector="&lt;html app='chrome.exe' title='Welcome to Steam' /&gt;&lt;webctrl parentid='store_search_link' tag='IMG' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:Click.Target>
-                      </ui:Click>
-                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Game Title" EmptyField="True" sap:VirtualizedContainerService.HintSize="692,144" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[Convert.ToString(searchData.Rows(ct).Item(2)) + &quot;[k(enter)]&quot;]">
-                        <ui:TypeInto.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eeeefbc7-171b-4826-9512-52e70cb8d2bc" InformativeScreenshot="d453e23c6e5f186e68a8b966af743c27" Selector="&lt;html app='chrome.exe' title='Steam Search' /&gt;&lt;webctrl class='text' tag='INPUT' type='text' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:TypeInto.Target>
-                      </ui:TypeInto>
-                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Search Game BUTTON" sap:VirtualizedContainerService.HintSize="692,116" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-                        <ui:Click.CursorPosition>
-                          <ui:CursorPosition Position="Center">
-                            <ui:CursorPosition.OffsetX>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetX>
-                            <ui:CursorPosition.OffsetY>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetY>
-                          </ui:CursorPosition>
-                        </ui:Click.CursorPosition>
-                        <ui:Click.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1be193f3-63e2-4905-b602-f419a395b1bf" InformativeScreenshot="59ee54f4dd492e5fa5b8ef1d89586147" Selector="&lt;html app='chrome.exe' title='Steam Search' /&gt;&lt;webctrl aaname='Search' tag='SPAN' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:Click.Target>
-                      </ui:Click>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="692,936" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                        <ui:CommentOut.Body>
-                          <ui:CommentOut sap:VirtualizedContainerService.HintSize="656,848" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="620,760" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="558,638" sap2010:WorkflowViewState.IdRef="Sequence_14">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Get jobs info" sap:VirtualizedContainerService.HintSize="496,516" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser Searched Job Page" sap:VirtualizedContainerService.HintSize="434,394" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="0266b9e9cf4292bdb9c6b39e0d8c1633" Selector="&lt;html app='chrome.exe' title='* | LinkedIn' /&gt;">
-                                      <ui:BrowserScope.Body>
-                                        <ActivityAction x:TypeArguments="x:Object">
-                                          <ActivityAction.Argument>
-                                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                          </ActivityAction.Argument>
-                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,238" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[jobs]" DisplayName="Extract Structured Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column1' attr='text' name2='Column2' attr2='href'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="338,116" sap2010:WorkflowViewState.IdRef="ExtractData_4" MaxNumberOfResults="100" SimulateClick="True">
-                                              <ui:ExtractData.Target>
-                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a89c3450-fb5b-4f93-a90a-d7b6c2a792db" InformativeScreenshot="bccaf4fcc81b80eda23d21309f243149" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;ul' tag='UL' /&gt;" WaitForReady="COMPLETE">
-                                                  <ui:Target.TimeoutMS>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:Target.TimeoutMS>
-                                                </ui:Target>
-                                              </ui:ExtractData.Target>
-                                            </ui:ExtractData>
-                                          </Sequence>
-                                        </ActivityAction>
-                                      </ui:BrowserScope.Body>
-                                    </ui:BrowserScope>
-                                  </Sequence>
-                                </Sequence>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                          </ui:CommentOut>
-                        </ui:CommentOut.Body>
-                      </ui:CommentOut>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="692,335" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                        <ui:CommentOut.Body>
-                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,247" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[jobs]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="338,125" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[&quot;Jobs &quot; + Convert.ToString(searchData.Rows(ct).Item(0)) + &quot;.xlsx&quot;]" />
-                          </Sequence>
-                        </ui:CommentOut.Body>
-                      </ui:CommentOut>
-                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="692,201" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                        <ui:CommentOut.Body>
-                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,113" sap2010:WorkflowViewState.IdRef="Sequence_17">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </Sequence>
-                        </ui:CommentOut.Body>
-                      </ui:CommentOut>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sucesfully logged in!&quot;]" />
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DataScraping.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="DataScraping.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="searchData">[searchData]</InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
                     </Sequence>
-                  </ui:InterruptibleWhile.Body>
-                </ui:InterruptibleWhile>
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="400,223" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Could not log in.&quot;]" />
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="400,203" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Could not log in.&quot;]" />
+                    </Sequence>
+                  </If.Else>
+                </If>
               </Sequence>
             </If.Else>
           </If>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,223" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,203" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;LinkedIn page could not be loaded.&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Steam page could not be loaded.&quot;]" />
         </Sequence>
       </If.Else>
     </If>
