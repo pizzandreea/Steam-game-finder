@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>712,1386</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1529,1386</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LinkedInLogin_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -92,13 +92,24 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="SteamLogin" sap:VirtualizedContainerService.HintSize="400,1321" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="credentialName">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Steam</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Steam" Name="credentialName" />
       <Variable x:TypeArguments="x:String" Name="username" />
       <Variable x:TypeArguments="ss:SecureString" Name="password" />
+      <Variable x:TypeArguments="x:String" Name="app">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">chrome.exe</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="inputTag">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">INPUT</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="buttonTag">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">BUTTON</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -118,7 +129,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="f5313817af425a868bcd1b941da5588a" Selector="&lt;html app='chrome.exe' title='Bun venit pe Steam' /&gt;&lt;webctrl class='global_action_link' parentid='global_action_menu' tag='A' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="f5313817af425a868bcd1b941da5588a" Selector="[string.Format(&quot;&lt;html app='{0}' title='Bun venit pe Steam' /&gt;&lt;webctrl class='global_action_link' parentid='global_action_menu' tag='A' /&gt;&quot;, app)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -131,7 +142,7 @@
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[credentialName]" CacheStrategy="None" DisplayName="Get Steam Credential" FolderPath="david.bejenariu@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="338,168" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[password]" Username="[username]" />
     <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type into username" EmptyField="True" sap:VirtualizedContainerService.HintSize="338,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[username]">
       <ui:TypeInto.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="195d3092-093d-4b60-9902-968cd7b06df5" InformativeScreenshot="a8735bb31f5f500e38ccf10d43f057ff" Selector="&lt;html app='chrome.exe' title='Conectează-te' /&gt;&lt;webctrl tag='INPUT' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="195d3092-093d-4b60-9902-968cd7b06df5" InformativeScreenshot="a8735bb31f5f500e38ccf10d43f057ff" Selector="[string.Format(&quot;&lt;html app='{0}' title='Conectează-te' /&gt;&lt;webctrl tag='{1}' /&gt;&quot;, app, inputTag)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -149,7 +160,7 @@
     </ui:TypeInto>
     <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type into password" EmptyField="True" sap:VirtualizedContainerService.HintSize="338,107" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[password]" SimulateType="True">
       <ui:TypeSecureText.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3d1985c2-8ac9-4198-8400-cb126779f659" InformativeScreenshot="a29a81f35ef0ddab180866a7c65aedad" Selector="&lt;html app='chrome.exe' title='Conectează-te' /&gt;&lt;webctrl tag='INPUT' type='password' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3d1985c2-8ac9-4198-8400-cb126779f659" InformativeScreenshot="a29a81f35ef0ddab180866a7c65aedad" Selector="[string.Format(&quot;&lt;html app='{0}' title='Conectează-te' /&gt;&lt;webctrl tag='{1}' type='password' /&gt;&quot;, app, inputTag)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -171,7 +182,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="6593e99e703e8685cae7be9504ccf635" Selector="&lt;html app='chrome.exe' title='Conectează-te' /&gt;&lt;webctrl id='base' tag='svg' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="6593e99e703e8685cae7be9504ccf635" Selector="[string.Format(&quot;&lt;html app='{0}' title='Conectează-te' /&gt;&lt;webctrl id='base' tag='svg' /&gt;&quot;, app)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -193,7 +204,7 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="52d2a19465f31acc09f9a12484e468af" Selector="&lt;html app='chrome.exe' title='Conectează-te' /&gt;&lt;webctrl tag='BUTTON' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f9318002-f097-4106-90c3-62940454d2f8" InformativeScreenshot="52d2a19465f31acc09f9a12484e468af" Selector="[string.Format(&quot;&lt;html app='{0}' title='Conectează-te' /&gt;&lt;webctrl tag='{1}' /&gt;&quot;, app, buttonTag)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -205,7 +216,7 @@
     </ui:Click>
     <ui:UiElementExists DisplayName="Element Exists SteamLogged in Page" Exists="[successfulLogin]" sap:VirtualizedContainerService.HintSize="338,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="10fd916f-1c26-4098-ba55-90ec572df73c" InformativeScreenshot="7dff01af53d4efa4880aedadf396ff44" Selector="&lt;html app='chrome.exe' title='Bun venit pe Steam' /&gt;&lt;webctrl id='header_notification_link' tag='DIV' /&gt;">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="10fd916f-1c26-4098-ba55-90ec572df73c" InformativeScreenshot="7dff01af53d4efa4880aedadf396ff44" Selector="[string.Format(&quot;&lt;html app='{0}' title='Bun venit pe Steam' /&gt;&lt;webctrl id='header_notification_link' tag='DIV' /&gt;&quot;, app)]">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>

@@ -5,10 +5,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1529,4097</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1529,5269</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataScraping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="47">
+    <scg:List x:TypeArguments="x:String" Capacity="94">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -56,10 +56,16 @@
       <x:String>UiPath.GSuite.Activities</x:String>
       <x:String>UiPath.GSuite.Activities.Contracts</x:String>
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>System.Windows.Documents</x:String>
+      <x:String>System.Windows.Media.Animation</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Windows.Threading</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="55">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -114,9 +120,20 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
       <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationUI</AssemblyReference>
+      <AssemblyReference>System.Windows.Presentation</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DataScraping" sap:VirtualizedContainerService.HintSize="753,4032" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DataScraping" sap:VirtualizedContainerService.HintSize="850,4185" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="ct">
         <Variable.Default>
@@ -125,36 +142,47 @@
       </Variable>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtGames" />
       <Variable x:TypeArguments="x:String" Name="fileId" />
+      <Variable x:TypeArguments="x:String" Name="app">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">chrome.exe</Literal>
+        </Variable.Default>
+      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Bun venit pe Steam" sap:VirtualizedContainerService.HintSize="691,3921" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="402f7a43-45fa-490d-ae68-092837567102" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Bun venit pe Steam" sap:VirtualizedContainerService.HintSize="788,4074" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="402f7a43-45fa-490d-ae68-092837567102" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="657,3704" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="754,3857" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[ct &lt; searchData.Rows.Count]" DisplayName="While" sap:VirtualizedContainerService.HintSize="595,3589" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[ct &lt; searchData.Rows.Count]" DisplayName="While" sap:VirtualizedContainerService.HintSize="692,3742" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
               <ui:InterruptibleWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="559,3423" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="656,3576" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataRow" Name="currentRow" />
+                    <Variable x:TypeArguments="x:String" Name="columnNames" />
+                    <Variable x:TypeArguments="x:String" Name="classSelector">
+                      <Variable.Default>
+                        <Literal x:TypeArguments="x:String">tab_filter_control_checkbox</Literal>
+                      </Variable.Default>
+                    </Variable>
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="497,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign sap:VirtualizedContainerService.HintSize="594,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="sd:DataRow">[currentRow]</OutArgument>
                     </Assign.To>
@@ -162,7 +190,7 @@
                       <InArgument x:TypeArguments="sd:DataRow">[searchData.Rows(ct)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="3000" DelayMS="2000" DisplayName="Click Search Icon" sap:VirtualizedContainerService.HintSize="497,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="3000" DelayMS="2000" DisplayName="Click Search Icon" sap:VirtualizedContainerService.HintSize="594,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -174,14 +202,14 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="7727fbd8fa9fe9ecc559b10e51531179" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl parentid='store_search_link' tag='IMG' /&gt;" TimeoutMS="3000">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="7727fbd8fa9fe9ecc559b10e51531179" Selector="[string.Format(&quot;&lt;html app='{0}' title='*' /&gt;&lt;webctrl parentid='store_search_link' tag='IMG' /&gt;&quot;, app)]" TimeoutMS="3000">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Game Title" EmptyField="True" sap:VirtualizedContainerService.HintSize="497,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[Convert.ToString(currentRow.Item(2)) + &quot;[k(enter)]&quot;]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Game Title" EmptyField="True" sap:VirtualizedContainerService.HintSize="594,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[Convert.ToString(currentRow.Item(2)) + &quot;[k(enter)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eeeefbc7-171b-4826-9512-52e70cb8d2bc" InformativeScreenshot="c607916596b2e21b92e8b7896468da9f" Selector="&lt;html app='chrome.exe' title='Căutare Steam' /&gt;&lt;webctrl class='text' tag='INPUT' type='text' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -193,17 +221,17 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <uix:NHover DisplayName="Hover 'Relevanță'" sap:VirtualizedContainerService.HintSize="497,157" sap2010:WorkflowViewState.IdRef="NHover_1" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Version="V3">
+                  <uix:NHover DisplayName="Hover 'Relevanță'" sap:VirtualizedContainerService.HintSize="594,157" sap2010:WorkflowViewState.IdRef="NHover_1" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Version="V3">
                     <uix:NHover.Target>
                       <uix:TargetAnchorable BrowserURL="https://store.steampowered.com/search/?term=" DesignTimeRectangle="1370, 391, 120, 21" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Relevanță'" FullSelectorArgument="&lt;webctrl class='trigger' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='trigger' tag='A' type='' aaname=' Relevanță' check:innerText='Relevanță' /&gt;" Guid="8b95efad-5578-4c39-a1e2-b739e837e491" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHwAAAAZCAYAAADzJ0pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAItSURBVGhD7ZpLbsIwEEB7hG4q0S2VkMqmEpt21xtwAHasuAU3YMcV2LHlAEjcgTuw79rN+DOemUxSCKlEbEd6UoLHxvjNOJHC0/NobAr5UIRnBhP+8vZhRu+f5nX6VUgAcAlOqWMUDg1ap8LwodJReKnsdAG3NeFaYCEd8hO+PpvFdlOdb8z34WxmWkzC3Cx8sr2Y1fGnxnytxzOqxV4dTmaitf0Tdr67PfkMRLs5O/E8PnW6CZfSQOTximp5COF504/w6d7MjxfzvQzXsYpY9Qvhs12MwWqTSbE8mQUmE3xP7IMibZ+zmeN3+rnYROSxfIeic86DfoTbhY0VbkVSGVSA78vGsVJDYvDkiRXqkggTw/bhYl1/n2xUMJtLwzwzoZtwrJAArRRXhfGe7gTYaxQu5FXA4seHKX4ex6KQxBAiqWQmXNDW9mhcc2j9JN2EkwqvV4nYdj1WoBAuY2qS2HZe4Ss5Ut85WH9xjtVPx2Bzf2zaDi1e427hQXCsVr4lM4RwvXIrgmiIRyFy5xAVfoVwOXeeDMNAO7S4JnoQXmErr+HeSO/PRAwfRyZNrEQuOF7b/ncJd+MNTThAD629jX6EB0G4eHzrRJFCjE0MHyMX3gkl2zl+Fsbcx12iRXhIONfuJVv8DlL7LcOgi2zgZuGFYZOB8D+eFzIjA+Fw62h4iMyQLIQXIjXh5X14uqjvw8s/XtJF/cdLkF4qPR3AJZUNMOGF9CnCs2JsfgGppwd8GaLtrgAAAABJRU5ErkJggg==" InformativeScreenshot="ea15113964811727bbf94dcdf4a479f0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Căutare Steam' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
                     </uix:NHover.Target>
                   </uix:NHover>
-                  <uix:NClick ClickType="Single" DisplayName="Click 'Relevanță'" sap:VirtualizedContainerService.HintSize="497,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Version="V3">
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Relevanță'" sap:VirtualizedContainerService.HintSize="594,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Version="V3">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://store.steampowered.com/search/?term=Black&amp;supportedlang=romanian&amp;os=win&amp;specials=1&amp;ndl=1" DesignTimeRectangle="1370, 399, 120, 21" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Relevanță'" FullSelectorArgument="&lt;webctrl class='trigger' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='trigger' tag='A' type='' aaname=' Relevanță' check:innerText='Relevanță' /&gt;" Guid="ce51c187-1959-45f5-80aa-29832a066ea4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHwAAAAZCAYAAADzJ0pXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAItSURBVGhD7ZpLbsIwEEB7hG4q0S2VkMqmEpt21xtwAHasuAU3YMcV2LHlAEjcgTuw79rN+DOemUxSCKlEbEd6UoLHxvjNOJHC0/NobAr5UIRnBhP+8vZhRu+f5nX6VUgAcAlOqWMUDg1ap8LwodJReKnsdAG3NeFaYCEd8hO+PpvFdlOdb8z34WxmWkzC3Cx8sr2Y1fGnxnytxzOqxV4dTmaitf0Tdr67PfkMRLs5O/E8PnW6CZfSQOTximp5COF504/w6d7MjxfzvQzXsYpY9Qvhs12MwWqTSbE8mQUmE3xP7IMibZ+zmeN3+rnYROSxfIeic86DfoTbhY0VbkVSGVSA78vGsVJDYvDkiRXqkggTw/bhYl1/n2xUMJtLwzwzoZtwrJAArRRXhfGe7gTYaxQu5FXA4seHKX4ex6KQxBAiqWQmXNDW9mhcc2j9JN2EkwqvV4nYdj1WoBAuY2qS2HZe4Ss5Ut85WH9xjtVPx2Bzf2zaDi1e427hQXCsVr4lM4RwvXIrgmiIRyFy5xAVfoVwOXeeDMNAO7S4JnoQXmErr+HeSO/PRAwfRyZNrEQuOF7b/ncJd+MNTThAD629jX6EB0G4eHzrRJFCjE0MHyMX3gkl2zl+Fsbcx12iRXhIONfuJVv8DlL7LcOgi2zgZuGFYZOB8D+eFzIjA+Fw62h4iMyQLIQXIjXh5X14uqjvw8s/XtJF/cdLkF4qPR3AJZUNMOGF9CnCs2JsfgGppwd8GaLtrgAAAABJRU5ErkJggg==" InformativeScreenshot="9e4ff93cb5c1c1934020826413dadf74.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Căutare Steam' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
                     </uix:NClick.Target>
                   </uix:NClick>
-                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Convert.ToString(currentRow.Item(3))]" sap:VirtualizedContainerService.HintSize="497,473" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Convert.ToString(currentRow.Item(3))]" sap:VirtualizedContainerService.HintSize="594,473" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                     <Switch.Default>
                       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;default&quot; +Convert.ToString(currentRow.Item(3))]" />
                     </Switch.Default>
@@ -285,7 +313,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NClick>
                   </Switch>
-                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Convert.ToString(currentRow.Item(4))]" sap:VirtualizedContainerService.HintSize="497,182" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Convert.ToString(currentRow.Item(4))]" sap:VirtualizedContainerService.HintSize="594,335" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                     <Switch.Default>
                       <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Windows" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_LEFT">
                         <ui:Click.CursorPosition>
@@ -322,7 +350,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="41cc2853447e94c996a4ca632fbc47dd" Selector="&lt;webctrl class='tab_filter_control_checkbox' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='49' tag='SPAN' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="41cc2853447e94c996a4ca632fbc47dd" Selector="[string.Format(&quot;&lt;webctrl class='{0}' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='49' tag='SPAN' /&gt;&quot;, classSelector)]">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
@@ -344,7 +372,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="a7488845b206ec80961f9155c0ae0be3" Selector="&lt;webctrl class='tab_filter_control_checkbox' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='50' tag='SPAN' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="a7488845b206ec80961f9155c0ae0be3" Selector="[string.Format(&quot;&lt;webctrl class='{0}' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='50' tag='SPAN' /&gt;&quot;, classSelector)]">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
@@ -366,7 +394,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="843a359deeba671a8916f752e0c6655f" Selector="&lt;webctrl class='tab_filter_control_checkbox' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='51' tag='SPAN' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a4e1015a-f183-4763-8b48-39f6f0382652" InformativeScreenshot="843a359deeba671a8916f752e0c6655f" Selector="[string.Format(&quot;&lt;webctrl class='{0}' css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;span&amp;gt;span' idx='51' tag='SPAN' /&gt;&quot;, classSelector)]">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
@@ -377,7 +405,7 @@
                       </ui:Click.Target>
                     </ui:Click>
                   </Switch>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Special Offers" sap:VirtualizedContainerService.HintSize="497,107" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Special Offers" sap:VirtualizedContainerService.HintSize="594,107" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -399,7 +427,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Search Game Button" sap:VirtualizedContainerService.HintSize="497,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Search Game Button" sap:VirtualizedContainerService.HintSize="594,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -411,7 +439,7 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1be193f3-63e2-4905-b602-f419a395b1bf" InformativeScreenshot="8346df3e9f782d3f8a5b193dfaf6394f" Selector="&lt;html app='chrome.exe' title='Căutare Steam' /&gt;&lt;webctrl aaname='Caută' tag='SPAN' /&gt;">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1be193f3-63e2-4905-b602-f419a395b1bf" InformativeScreenshot="8346df3e9f782d3f8a5b193dfaf6394f" Selector="[string.Format(&quot;&lt;html app='{0}' title='Căutare Steam' /&gt;&lt;webctrl aaname='Caută' tag='SPAN' /&gt;&quot;, app)]">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -421,21 +449,21 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="497,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtGames]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Title' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Release date' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Price' ReferenceName='Column2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="497,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Timeout="5" Version="V3">
+                  <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="594,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dtGames]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Title' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Release date' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Price' ReferenceName='Column2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='a' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="594,157" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="402f7a43-45fa-490d-ae68-092837567102" Timeout="5" Version="V3">
                     <uix:NExtractData.Target>
                       <uix:TargetAnchorable DesignTimeRectangle="169, 390, 686, 10483" DesignTimeScaleFactor="1" FriendlyName="'Sortează după'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div' tag='DIV' /&gt;" Guid="048636a1-e5ac-4ddc-8bac-f2135cd17e8c" InformativeScreenshot="109e17f18fcf0edfcdc27db183728a87.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Căutare Steam' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
                     </uix:NExtractData.Target>
                   </uix:NExtractData>
-                  <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dtGames]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="497,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[&quot;Games &quot; + Convert.ToString(currentRow.Item(0)) + &quot;.xlsx&quot;]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send mail to users with extracted data" sap:VirtualizedContainerService.HintSize="497,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SendMail.xaml">
+                  <ui:WriteRange StartingCell="{x:Null}" AddHeaders="False" DataTable="[dtGames]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="594,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[&quot;Games &quot; + Convert.ToString(currentRow.Item(0)) + &quot;.xlsx&quot;]" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send mail to users with extracted data" sap:VirtualizedContainerService.HintSize="594,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SendMail.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="sd:DataTable" x:Key="searchData">[searchData]</InArgument>
                       <InArgument x:TypeArguments="x:Int32" x:Key="ct">[ct]</InArgument>
                       <InArgument x:TypeArguments="sd:DataTable" x:Key="games">[dtGames]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="497,687" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="594,687" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                     <TryCatch.Try>
                       <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" CredentialID="{x:Null}" CredentialSecret="{x:Null}" Folder="{x:Null}" SecureCredentialSecret="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="ServiceAccountKey" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,459" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyPath="C:\Users\david\Desktop\RPA\proiect\proiect-Liviu\RPA\rpa-project-374613-fccab09232d1.p12" KeyType="P12" OAuthClient="UiPath" Password="notasecret" ServiceAccountEmail="steam-games-finder@rpa-project-374613.iam.gserviceaccount.com" Services="Unselected">
                         <uga:GSuiteApplicationScope.AuthenticationScopes>
@@ -475,7 +503,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <Assign DisplayName="Go to next excel line" sap:VirtualizedContainerService.HintSize="497,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Go to next excel line" sap:VirtualizedContainerService.HintSize="594,82" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[ct]</OutArgument>
                     </Assign.To>
